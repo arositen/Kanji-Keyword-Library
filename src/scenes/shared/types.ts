@@ -1,5 +1,5 @@
 export interface KanjiEntry {
-    hIndex: number,
+    hIndex: string,
     character: string,
     characterType: string,
     keyword: string,
