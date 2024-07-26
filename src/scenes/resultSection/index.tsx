@@ -9,8 +9,8 @@ function resultSection({ }: Props) {
 
     return (
         <section className="p-5 grid md:grid-cols-2 sm:grid-cols-1">
-            {kanjiData.map(k => (
-                <KanjiBlock entry={k} />
+            {kanjiData.map((k, index) => (
+                <KanjiBlock key={`kblock - ${index}`} entry={k} />
             ))}
         </section>
     )

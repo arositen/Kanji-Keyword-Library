@@ -30,14 +30,14 @@ const KanjiBlock = ({ entry }: Props) => {
                 </div>
                 {entry.readings && (<div className="p-2 text-md">
                     <div className="my-1">
-                        <span className="font-bold">Kun: </span>{entry.readings.kunyomi.map(r => (
-                            <span className="underline underline-offset-4 mx-2">{r} ,</span>
+                        <span className="font-bold">Kun: </span>{entry.readings.kunyomi.map((r, index) => (
+                            <span key={`kun - ${index} - ${entry.hIndex}`} className="underline underline-offset-4 mx-2">{r} ,</span>
                         ))}
 
                     </div>
                     <div className="my-1">
-                        <span className="font-bold">On: </span>{entry.readings.onyomi.map(r => (
-                            <span className="underline underline-offset-4 mx-2">{r} ,</span>
+                        <span className="font-bold">On: </span>{entry.readings.onyomi.map((r, index) => (
+                            <span key={`on - ${index} - ${entry.hIndex}`} className="underline underline-offset-4 mx-2">{r} ,</span>
                         ))}
                     </div>
 
