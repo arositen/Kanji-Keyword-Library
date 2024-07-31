@@ -10,7 +10,7 @@ app.get('/api/bye', (req, res) => res.send("Bye for now Jesse"));
 app.get('/api/firstKanji', async (req, res) => {
     try {
 
-        const allkanji = await pool.query('SELECT * FROM kanjitest');
+        const allkanji = await pool.query('SELECT * FROM kanjitest WHERE hIndex = 2000;');
         res.json(allkanji.rows);
 
     } catch (error) {
