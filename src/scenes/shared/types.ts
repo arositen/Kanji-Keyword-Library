@@ -1,13 +1,9 @@
 export interface KanjiEntry {
-    hIndex: string,
-    character: string,
-    characterType: string,
+    id: string;
+    h_index: number,
+    k_character: string,
     keyword: string,
     story: string,
-    readings?: {
-        kunyomi: string[],
-        onyomi: string[],
-    },
-    meaningAsPrimitive?: string[],
-    primitiveNotes?: string
+    kunreadings: string[],
+    onreadings: string[],
 }
