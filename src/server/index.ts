@@ -41,7 +41,7 @@ app.get('/api/search/:searchString', async (req, res) => {
     try {
 
         const stringToSearch = req.params.searchString;
-        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE '${stringToSearch}'=ANY(kunreadings);`);
+        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE '${stringToSearch}'= ANY(kunreadings) OR '${stringToSearch}' = ANY(onreadings);`);
         res.json(allkanji.rows);
 
     } catch (error) {

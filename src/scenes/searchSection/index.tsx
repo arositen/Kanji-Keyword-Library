@@ -8,10 +8,6 @@ function searchSection({ }: Props) {
     const [searchString, setSearchString] = useState('');
     const [searchResults, setSearchResults] = useState([]);
 
-    const getResults = (submittedInput: string): void => {
-        console.log("searching for: ", submittedInput);
-    }
-
     const getInitialData = async () => {
 
         try {
@@ -26,6 +22,19 @@ function searchSection({ }: Props) {
     }
 
     useEffect(() => getInitialData, [])
+
+    const getResults = async (submittedInput: string): void => {
+        console.log("searching for: ", submittedInput);
+        try {
+            const response = await fetch(`http://localhost:5173/api/search/${searchString}`);
+            const jsonResponse = await response.json();
+            console.log(jsonResponse);
+            setSearchResults(jsonResponse);
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
