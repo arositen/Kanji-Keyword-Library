@@ -14,18 +14,6 @@ app.get('/api/firstKanji', async (req, res) => {
     }
 });
 
-app.get('/api/randomKanji', async (req, res) => {
-
-    try {
-        const randomNum = Math.floor((Math.random() * 2200) + 1);
-        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE h_index = ${randomNum};`);
-        res.json(allkanji.rows[0]);
-
-    } catch (error) {
-        console.log(error)
-    }
-});
-
 app.get('/api/firstTenKanji', async (req, res) => {
 
     try {
@@ -36,5 +24,29 @@ app.get('/api/firstTenKanji', async (req, res) => {
         console.log(error)
     }
 });
+
+app.get('/api/randomKanji', async (req, res) => {
+
+    try {
+        const randomNum = Math.floor((Math.random() * 2200) + 1);
+        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE h_index = ${randomNum};`);
+        res.send(allkanji.rows[0]);
+
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+app.get('/api/search/:searchString', async (req, res) => {
+    try {
+
+        const stringToSearch = req.params.searchString;
+        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE '${stringToSearch}'=ANY(kunreadings);`);
+        res.json(allkanji.rows);
+
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 app.listen(PORT, () => console.log(`Express server has started and is listening on port ${PORT}`));
