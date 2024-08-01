@@ -1,14 +1,29 @@
+import { useState } from "react";
+
 type Props = {}
 
 function RandomButton({ }: Props) {
 
-    // Function to retrieve the first row from the kanjitest table
-    async function getFirstRowFromKanjiTest() {
-        console.log("hi there you");
+    const [randomKanji, setRandomKanji] = useState('Generate a Character');
+
+    const getData = async () => {
+
+        try {
+            const response = await fetch('http://localhost:5173/api/randomKanji');
+            const jsonResponse = await response.json();
+
+            setRandomKanji(jsonResponse.k_character);
+
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
-        <button className="m-2 bg-black text-white" onClick={() => getFirstRowFromKanjiTest()}>Get random kanji</button>
+        <>
+            <button className="m-2 bg-black text-white" onClick={() => getData()}>Get random kanji</button>
+            <div>{randomKanji}</div>
+        </>
     )
 }
 

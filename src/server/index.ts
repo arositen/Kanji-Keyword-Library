@@ -4,19 +4,7 @@ import { pool } from "./db";
 const PORT = process.env.PORT ?? 3002;
 const app = express();
 
-
-app.get('/api/hi', (req, res) => {
-    console.log(req)
-    res.send("hello there Jesse")
-});
-
-app.get('/api/bye', (req, res) => {
-    console.log(req)
-    res.send("Bye for now Jesse")
-});
-
 app.get('/api/firstKanji', async (req, res) => {
-    console.log(req)
     try {
         const allkanji = await pool.query('SELECT * FROM kanjitest WHERE h_index = 1;');
         res.json(allkanji.rows)
@@ -26,8 +14,20 @@ app.get('/api/firstKanji', async (req, res) => {
     }
 });
 
+app.get('/api/randomKanji', async (req, res) => {
+
+    try {
+        const randomNum = Math.floor((Math.random() * 2200) + 1);
+        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE h_index = ${randomNum};`);
+        res.json(allkanji.rows[0]);
+
+    } catch (error) {
+        console.log(error)
+    }
+});
+
 app.get('/api/firstTenKanji', async (req, res) => {
-    console.log(req)
+
     try {
         const allkanji = await pool.query('SELECT * FROM kanjitest WHERE h_index <= 10;');
         res.json(allkanji.rows)
