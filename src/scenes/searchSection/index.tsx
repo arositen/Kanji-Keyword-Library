@@ -8,22 +8,26 @@ function searchSection({ }: Props) {
     const [searchString, setSearchString] = useState('');
     const [searchResults, setSearchResults] = useState([]);
 
-    const getInitialData = async () => {
+    useEffect(() => {
 
-        try {
-            const response = await fetch('http://localhost:5173/api/firstTenKanji');
-            const jsonResponse = await response.json();
+        const getInitialData = async (): Promise<void> => {
 
-            setSearchResults(jsonResponse);
+            try {
+                const response = await fetch('http://localhost:5173/api/firstTenKanji');
+                const jsonResponse = await response.json();
 
-        } catch (error) {
-            console.error(error)
+                setSearchResults(jsonResponse);
+
+            } catch (error) {
+                console.error(error)
+            }
         }
-    }
 
-    useEffect(() => getInitialData, [])
+        getInitialData();
 
-    const getResults = async (submittedInput: string): void => {
+    }, [])
+
+    const getResults = async (submittedInput: string): Promise<void> => {
         console.log("searching for: ", submittedInput);
         try {
             const response = await fetch(`http://localhost:5173/api/search/${searchString}`);
