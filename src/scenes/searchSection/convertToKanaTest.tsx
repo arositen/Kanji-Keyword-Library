@@ -10,11 +10,25 @@ const convertToKanaTest = () => {
 
         let characterArray = romaji.split('')
         let parsedString = ''
-        let index = 0;
+        let letterCache = '';
+
         for (let i = 0; i < characterArray.length; i++) {
 
-            if (characterArray[i] in letterToKana) {
+            if (letterCache in letterToKana) {
+
+                parsedString = parsedString + letterToKana[letterCache];
+                letterCache = '';
+
+            } else if (characterArray[i] in letterToKana) {
+
                 parsedString = parsedString + letterToKana[characterArray[i]];
+                letterCache = '';
+
+            } else {
+
+                letterCache = letterCache + characterArray[i];
+                console.log('letterCache is currently: ', letterCache)
+                parsedString = letterCache;
             }
         }
         return parsedString
