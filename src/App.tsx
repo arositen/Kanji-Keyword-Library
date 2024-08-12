@@ -1,14 +1,13 @@
 import '@/index.css'
 import SearchSection from "@/scenes/searchSection";
-import RandomButton from './scenes/shared/randomButton';
 
 function App() {
 
   return (
-    <div className='flex justify-center'>
-      <div className='max-w-[2000px]'>
+    <div className='flex justify-center w-[100vw]'>
+      <div className='flex w-full max-w-[2000px] flex-col'>
         <SearchSection />
-        <RandomButton />
+
       </div>
     </div>
   )
