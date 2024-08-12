@@ -7,20 +7,18 @@ const convertToKanaTest = () => {
 
     const parseIntoKana = (romaji: string): string => {
 
-        if (romaji === '') {
-            return '';
-        } else {
-            let characterArray = romaji.split('')
-            let parsedString = ''
-            let index = 0;
-            for (let i = 0; i < characterArray.length; i++) {
 
-                if (characterArray[i] in letterToKana) {
-                    parsedString = parsedString + letterToKana[characterArray[i]];
-                }
+        let characterArray = romaji.split('')
+        let parsedString = ''
+        let index = 0;
+        for (let i = 0; i < characterArray.length; i++) {
+
+            if (characterArray[i] in letterToKana) {
+                parsedString = parsedString + letterToKana[characterArray[i]];
             }
-            return parsedString
         }
+        return parsedString
+
 
     }
 
