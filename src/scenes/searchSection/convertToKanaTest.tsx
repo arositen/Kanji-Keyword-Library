@@ -1,3 +1,4 @@
+import e from 'express';
 import { useState } from 'react'
 
 const convertToKanaTest = () => {
@@ -11,28 +12,32 @@ const convertToKanaTest = () => {
         let characterArray = romaji.split('')
         let parsedString = ''
         let letterCache = '';
+        let left = 0;
 
         for (let i = 0; i < characterArray.length; i++) {
 
-            if (letterCache in letterToKana) {
+            let currentChunkToEval = letterCache + characterArray[i];
 
-                parsedString = parsedString + letterToKana[letterCache];
+            if ((i > 0) && (currentChunkToEval in letterToKana)) {
+
+                parsedString = parsedString.slice(0, left) + letterToKana[currentChunkToEval];
                 letterCache = '';
+                currentChunkToEval = ''
+                left = left + 1;
 
             } else if (characterArray[i] in letterToKana) {
 
-                parsedString = parsedString + letterToKana[characterArray[i]];
+                parsedString = convertedText + letterToKana[characterArray[i]];
                 letterCache = '';
-
+                left = left + 1;
             } else {
 
                 letterCache = letterCache + characterArray[i];
                 console.log('letterCache is currently: ', letterCache)
-                parsedString = letterCache;
+                parsedString = convertedText + letterCache
             }
         }
         return parsedString
-
 
     }
 
@@ -133,7 +138,7 @@ const convertToKanaTest = () => {
         'pu': 'ぷ',
         'pe': 'ぺ',
         'po': 'ぽ',
-        'n': 'ん',
+        'nn': 'ん',
         'gya': 'ぎゃ',
         'gyu': 'ぎゅ',
         'gyo': 'ぎょ',
