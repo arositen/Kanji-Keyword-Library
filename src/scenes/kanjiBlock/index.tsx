@@ -7,16 +7,16 @@ type Props = {
 const KanjiBlock = ({ entry }: Props) => {
 
     return (
-        <div className="m-2 p-2 relative max-w-[1000px] flex justify-start items-center text-white bg-gradient-to-br from-[#363638] via-[#58585c] to-[#363638] border-Sakura-500 border-2 rounded-2xl">
+        <div className="m-2 p-2 relative max-w-[1000px] flex md:flex-row flex-col justify-start items-center text-white bg-gradient-to-br from-[#363638] via-[#58585c] to-[#363638] border-Sakura-500 border-2 rounded-2xl">
             <div className="h-8 w-8 flex justify-center items-center absolute top-0 right-0 m-2 p-2 bg-slate-400 rounded-full">
                 {entry.h_index}
             </div>
 
-            <div className="flex flex-col justify-center m-2 p-5">
+            <div className="flex flex-col justify-center m-2 sm:p-5 p-2">
                 <div className="flex justify-center text-2xl font-bold m-2 p-2">
                     {entry.keyword.toUpperCase()}
                 </div>
-                <div className="text-5xl font-sans2 hover:font-sans border-2 border-gray-400 p-8 m-2">
+                <div className="text-5xl font-sans2 hover:font-sans flex justify-center sm:p-5 p-2 m-2">
                     {entry.k_character}
                 </div>
             </div>
