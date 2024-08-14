@@ -7,7 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        'CPink-100': '#ed6d8c',
+
+        'Sakura-100': '#ffe1ec',
+        'Sakura-200': '#ffd7e2',
+        'Sakura-300': '#ffcdd8',
+        'Sakura-400': '#ffc3ce',
+        'Sakura-500': '#ffb9c4',
+        'Mint': '#b8f2e6',
       }
     },
     fontFamily: {

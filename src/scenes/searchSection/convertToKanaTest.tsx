@@ -158,17 +158,17 @@ const convertToKanaTest = () => {
     }
 
     return (
-        <section className='flex justify-center w-full border-2 border-black'>
+        <section className='flex justify-center w-full'>
             <div className='flex flex-col justify-center basis-1/2 m-2'>
-                <h1 className='flex justify-center text-lg w-full'>This is the input section:</h1>
+                <h1 className='flex justify-center text-lg w-full text-white'>This is the input section:</h1>
                 <div className='flex justify-center'>
                     <input type="text" placeholder='Input latin characters' className='px-1 border-2 border-black' onChange={(e) => { handleInput(e) }} />
                 </div>
             </div>
             <div className='flex flex-col justify-center basis-1/2 m-2'>
-                <h1 className='flex justify-center text-lg w-full'>This is the result section:</h1>
+                <h1 className='flex justify-center text-lg w-full text-white'>This is the result section:</h1>
                 <div className='flex justify-center'>
-                    <div className='px-1 border-2 border-black w-60 h-8'>{convertedText}</div>
+                    <div className='px-1 border-2 border-black bg-white w-60 h-8'>{convertedText}</div>
                 </div>
             </div>
         </section>
