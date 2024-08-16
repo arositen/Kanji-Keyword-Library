@@ -3,43 +3,52 @@ import { useState } from 'react'
 const convertToKanaTest = () => {
 
     const [currentText, setCurrentText] = useState("");
-    const [convertedText, setConvertedText] = useState("");
+    const [convertedHiraganaText, setConvertedHiraganaText] = useState("");
+    const [convertedKatakanaText, setConvertedKatakanaText] = useState("");
 
-    const parseIntoKana = (romaji: string): string => {
+    const parseIntoKana = (romaji: string): { hiragana: string, katakana: string } => {
 
-        let FinalString = '';
+        let finalHiraganaString = '';
+        let finalKatakanaString = '';
 
         for (let i = 0; i < romaji.length; i++) {
             let chunk = romaji.slice(i, i + 3); //sliding window
-            let addToFinalString = ''
+            let addToFinalHiraganaString = ''
+            let addToFinalKatakanaString = ''
 
             for (let j = 0; j < chunk.length; j++) {
 
                 let chunkSection = chunk.slice(0, j + 1);
 
-                if (chunkSection in letterToKana) {
-                    addToFinalString = addToFinalString.slice(j) + letterToKana[chunkSection];
+                if (chunkSection in letterToHiragana) {
+
+                    addToFinalHiraganaString = addToFinalHiraganaString.slice(j) + letterToHiragana[chunkSection];
+                    addToFinalKatakanaString = addToFinalKatakanaString.slice(j) + letterToKatakana[chunkSection];
                     i = i + chunkSection.length - 1;
 
                 } else {
-                    addToFinalString = addToFinalString.slice(0, j) + chunk.slice(j, 1)
+                    addToFinalHiraganaString = addToFinalHiraganaString.slice(0, j) + chunk.slice(j, 1)
+                    addToFinalKatakanaString = addToFinalKatakanaString.slice(0, j) + chunk.slice(j, 1)
                 }
             }
 
-            FinalString = FinalString + addToFinalString;
-            console.log(FinalString)
+            finalHiraganaString = finalHiraganaString + addToFinalHiraganaString;
+            finalKatakanaString = finalKatakanaString + addToFinalKatakanaString;
+
         }
 
-        return FinalString
+        return { "hiragana": finalHiraganaString, "katakana": finalKatakanaString };
 
     }
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCurrentText(e.target.value);
-        setConvertedText(parseIntoKana(e.target.value));
+        let conversions = parseIntoKana(e.target.value);
+        setConvertedHiraganaText(conversions.hiragana);
+        setConvertedKatakanaText(conversions.katakana);
     }
 
-    const letterToKana = {
+    const letterToHiragana = {
         'a': 'あ',
         'i': 'い',
         'u': 'う',
@@ -150,18 +159,135 @@ const convertToKanaTest = () => {
 
     }
 
+    const letterToKatakana = {
+        'a': 'ア',
+        'i': 'イ',
+        'u': 'ウ',
+        'e': 'エ',
+        'o': 'オ',
+        'ka': 'カ',
+        'ki': 'キ',
+        'ku': 'ク',
+        'ke': 'ケ',
+        'ko': 'コ',
+        'sa': 'サ',
+        'shi': 'シ',
+        'su': 'ス',
+        'se': 'セ',
+        'so': 'ソ',
+        'ta': 'タ',
+        'chi': 'チ',
+        'tsu': 'ツ',
+        'te': 'テ',
+        'to': 'ト',
+        'na': 'ナ',
+        'ni': 'ニ',
+        'nu': 'ヌ',
+        'ne': 'ネ',
+        'no': 'ノ',
+        'ha': 'ハ',
+        'hi': 'ヒ',
+        'fu': 'フ',
+        'he': 'ヘ',
+        'ho': 'ホ',
+        'ma': 'マ',
+        'mi': 'ミ',
+        'mu': 'ム',
+        'me': 'メ',
+        'mo': 'モ',
+        'ya': 'ヤ',
+        'yu': 'ユ',
+        'yo': 'ヨ',
+        'ra': 'ラ',
+        'ri': 'リ',
+        'ru': 'ル',
+        're': 'レ',
+        'ro': 'ロ',
+        'wa': 'ワ',
+        'wo': 'ヲ',
+        'kya': 'キャ',
+        'kyu': 'キュ',
+        'kyo': 'キョ',
+        'sha': 'シャ',
+        'shu': 'シュ',
+        'sho': 'ショ',
+        'cha': 'チャ',
+        'chu': 'チュ',
+        'cho': 'チョ',
+        'nya': 'ニャ',
+        'nyu': 'ニュ',
+        'nyo': 'ニョ',
+        'hya': 'ヒャ',
+        'hyu': 'ヒュ',
+        'hyo': 'ヒョ',
+        'mya': 'ミャ',
+        'myu': 'ミュ',
+        'myo': 'ミョ',
+        'rya': 'リャ',
+        'ryu': 'リュ',
+        'ryo': 'リョ',
+        'ga': 'ガ',
+        'gi': 'ギ',
+        'gu': 'グ',
+        'ge': 'ゲ',
+        'go': 'ゴ',
+        'za': 'ザ',
+        'ji': 'ジ',
+        'zu': 'ズ',
+        'ze': 'ゼ',
+        'zo': 'ゾ',
+        'da': 'ダ',
+        'di': 'ヂ',
+        'du': 'ヅ',
+        'de': 'デ',
+        'do': 'ド',
+        'ba': 'バ',
+        'bi': 'ビ',
+        'bu': 'ブ',
+        'be': 'ベ',
+        'bo': 'ボ',
+        'pa': 'パ',
+        'pi': 'ピ',
+        'pu': 'プ',
+        'pe': 'ペ',
+        'po': 'ポ',
+        'nn': 'ン',
+        'gya': 'ギャ',
+        'gyu': 'ギュ',
+        'gyo': 'ギョ',
+        'ja': 'ジャ',
+        'ju': 'ジュ',
+        'jo': 'ジョ',
+        'dya': 'ヂャ',
+        'dyu': 'ヂュ',
+        'dyo': 'ヂョ',
+        'bya': 'ビャ',
+        'byu': 'ビュ',
+        'byo': 'ビョ',
+        'pya': 'ピャ',
+        'pyu': 'ピュ',
+        'pyo': 'ピョ',
+
+    }
+
     return (
         <section className='flex justify-center w-full'>
-            <div className='flex flex-col justify-center basis-1/2 m-2'>
+            <div className='flex flex-col justify-center basis-1/3 m-2'>
                 <h1 className='flex justify-center text-lg w-full text-white'>This is the input section:</h1>
                 <div className='flex justify-center'>
                     <input type="text" placeholder='Input latin characters' className='px-1 border-2 border-black' onChange={(e) => { handleInput(e) }} />
                 </div>
             </div>
-            <div className='flex flex-col justify-center basis-1/2 m-2'>
-                <h1 className='flex justify-center text-lg w-full text-white'>This is the result section:</h1>
+            <div className='flex flex-col justify-center basis-1/3 m-2'>
+                <h1 className='flex justify-center text-lg w-full text-white'>Hiragana result section:</h1>
                 <div className='flex justify-center'>
-                    <div className='px-1 border-2 border-black bg-white w-60 h-8'>{convertedText}</div>
+                    <div className='px-1 border-2 border-black bg-white w-60 h-8'>{convertedHiraganaText}</div>
+                </div>
+            </div>
+            <div className='flex flex-col justify-center basis-1/3 m-2'>
+                <h1 className='flex justify-center text-lg w-full text-white'>Katakana result section:</h1>
+                <div className='flex justify-center'>
+                    <div className='px-1 border-2 border-black bg-white w-60 h-8'>{convertedKatakanaText}</div>
                 </div>
             </div>
         </section>
