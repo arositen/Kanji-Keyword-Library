@@ -1,4 +1,3 @@
-import e from 'express';
 import { useState } from 'react'
 
 const convertToKanaTest = () => {
@@ -8,36 +7,26 @@ const convertToKanaTest = () => {
 
     const parseIntoKana = (romaji: string): string => {
 
-        let characterArray = romaji.split('')
-        let parsedString = ''
-        let letterCache = '';
-        let left = 0;
+        let FinalString = '';
 
-        for (let i = 0; i < characterArray.length; i++) {
+        for (let i = 0; i < romaji.length; i++) {
+            let chunk = romaji.slice(i, i + 3); //sliding window
+            let addToFinalString = ''
 
-            let currentChunkToEval = letterCache + characterArray[i];
+            for (let j = 0; j < chunk.length; j++) {
+                if (chunk.slice(0, j + 1) in letterToKana) {
+                    addToFinalString = addToFinalString.slice(j) + letterToKana[chunk.slice(0, j + 1)];
 
-            if ((i > 0) && (currentChunkToEval in letterToKana)) {
-
-                parsedString = parsedString.slice(0, left) + letterToKana[currentChunkToEval];
-                letterCache = '';
-                currentChunkToEval = ''
-                left = left + 1;
-
-            } else if (characterArray[i] in letterToKana) {
-
-                parsedString = parsedString + letterToKana[characterArray[i]];
-                letterCache = '';
-                left = left + 1;
-            } else {
-
-                letterCache = letterCache + characterArray[i];
-                console.log('letterCache is currently: ', letterCache)
-                parsedString = parsedString + letterCache
-
+                } else {
+                    addToFinalString = addToFinalString.slice(0, j) + chunk.slice(j, 1)
+                }
             }
+
+            FinalString = FinalString + addToFinalString;
+            console.log(FinalString)
         }
-        return parsedString
+
+        return FinalString
 
     }
 
