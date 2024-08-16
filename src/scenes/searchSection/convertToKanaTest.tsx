@@ -16,6 +16,7 @@ const convertToKanaTest = () => {
             for (let j = 0; j < chunk.length; j++) {
                 if (chunk.slice(0, j + 1) in letterToKana) {
                     addToFinalString = addToFinalString.slice(j) + letterToKana[chunk.slice(0, j + 1)];
+                    i = i + chunk.slice(0, j + 1).length - 1;
 
                 } else {
                     addToFinalString = addToFinalString.slice(0, j) + chunk.slice(j, 1)
