@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { LetterToKana } from '../shared/types'
 
-const letterToHiragana = {
+const letterToHiragana: LetterToKana = {
     a: 'あ',
     i: 'い',
     u: 'う',
@@ -227,7 +227,6 @@ const convertToKanaTest = () => {
 
     const [convertedHiraganaText, setConvertedHiraganaText] = useState("");
     const [convertedKatakanaText, setConvertedKatakanaText] = useState("");
-
 
     const parseIntoKana = (romaji: string): { hiragana: string, katakana: string } => {
 
