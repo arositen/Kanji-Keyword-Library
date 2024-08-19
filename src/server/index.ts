@@ -1,5 +1,6 @@
 import express from "express";
 import { pool } from "./db";
+import convertToKana from "@/utils/convertToKana";
 
 const PORT = process.env.PORT ?? 3002;
 const app = express();
@@ -41,7 +42,8 @@ app.get('/api/search/:searchString', async (req, res) => {
     try {
 
         const stringToSearch = req.params.searchString;
-        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE '${stringToSearch}'= ANY(kunreadings) OR '${stringToSearch}' = ANY(onreadings);`);
+        const kanaSearchTerms = convertToKana(stringToSearch);
+        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE '${kanaSearchTerms.hiragana}' = ANY(kunreadings) OR '${kanaSearchTerms.katakana}' = ANY(onreadings);`);
         res.json(allkanji.rows);
 
     } catch (error) {
