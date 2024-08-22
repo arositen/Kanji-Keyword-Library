@@ -45,6 +45,8 @@ function searchSection({ }: Props) {
         getResults(searchString);
     }
 
+    const buttonStyles = ' px-3 mx-3 flex justify-center items-center bg-blue-500';
+
     return (
         <>
             <section className="text-white flex flex-col justify-center items-center w-full">
@@ -55,6 +57,12 @@ function searchSection({ }: Props) {
                     <input type="text" className="" onChange={(e) => setSearchString(e.target.value)} />
                     <button type="submit" className="bg-white mx-2 p-2">Search</button>
                 </form>
+
+                <div className="ml-10 flex justify-start w-full">
+                    <button className={buttonStyles}>Home</button>
+                    <button className={buttonStyles}>Kanji of the day</button>
+                    <button className={buttonStyles}>I'm feeling lucky</button>
+                </div>
             </section>
 
             <ResultSection results={searchResults} />
