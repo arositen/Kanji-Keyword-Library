@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import ResultSection from '../resultSection';
 
 type Props = {}
@@ -46,7 +47,7 @@ function searchSection({ }: Props) {
     }
 
     const buttonStyles = ' px-3 mx-3 flex justify-center items-center bg-blue-500';
-    const searchBarStyle = 'w-[600px] h-10 text-sm rounded-full pl-10 shadow-[3px_3px_20px_-10px_rgba(0,0,0,0.5)]'
+    const searchBarStyle = 'flex items-center w-[600px] h-10 text-sm rounded-full px-2 shadow-[3px_3px_20px_-10px_rgba(0,0,0,0.5)]'
 
     return (
         <>
@@ -54,7 +55,10 @@ function searchSection({ }: Props) {
                 <h3 className="text-2xl mb-5 font-medium">For Japanese learners using James Heisig's "Remembering the Kanji"</h3>
                 <div className="p-2">Look up kanji by entering kun'yomi or on'yomi reading </div>
                 <form className=" text-black flex mb-5" onSubmit={(e) => handleSubmit(e)}>
-                    <input type="text" className={searchBarStyle} placeholder='Seach all kanji...' onChange={(e) => setSearchString(e.target.value)} />
+                    <div className={searchBarStyle}>
+                        <MagnifyingGlassIcon className="h-6 text-gray-400 mr-2" />
+                        <input type="text" className='w-full h-full px-1 bg-transparent outline-none' placeholder='Seach all kanji...' onChange={(e) => setSearchString(e.target.value)} />
+                    </div>
                     {/* <button type="submit" className="bg-white mx-2 p-2">Search</button> */}
                 </form>
 
