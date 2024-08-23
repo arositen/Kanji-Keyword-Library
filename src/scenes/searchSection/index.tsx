@@ -46,15 +46,15 @@ function searchSection({ }: Props) {
         getResults(searchString);
     }
 
-    const buttonStyles = ' px-3 mx-3 flex justify-center items-center bg-blue-500';
-    const searchBarStyle = 'flex items-center w-[600px] h-10 text-sm rounded-full px-2 shadow-[3px_3px_20px_-10px_rgba(0,0,0,0.5)]'
+    const buttonStyles = ' py-2 px-5 mx-3 text-sm text-gray-100 flex justify-center items-center rounded-full bg-DarkMode-Gray-400';
+    const searchBarStyle = 'flex items-center w-[600px] h-10 text-sm rounded-full px-2 shadow-[-10px_3px_20px_-10px] shadow-[#6c757d]'
 
     return (
         <>
-            <section className="text-black flex flex-col justify-center items-center w-full pt-36">
+            <section className="text-white flex flex-col justify-center items-center w-full pt-36 bg-DarkMode-Gray-600">
                 <h3 className="text-2xl mb-5 font-medium">For Japanese learners using James Heisig's "Remembering the Kanji"</h3>
                 <div className="p-2">Look up kanji by entering kun'yomi or on'yomi reading </div>
-                <form className=" text-black flex mb-10" onSubmit={(e) => handleSubmit(e)}>
+                <form className=" text-white flex mb-10" onSubmit={(e) => handleSubmit(e)}>
                     <div className={searchBarStyle}>
                         <MagnifyingGlassIcon className="h-6 text-gray-400 mr-2" />
                         <input type="text" className='w-full h-full px-1 bg-transparent outline-none' placeholder='Seach all kanji...' onChange={(e) => setSearchString(e.target.value)} />

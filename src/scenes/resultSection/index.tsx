@@ -9,7 +9,7 @@ type Props = {
 function resultSection({ results }: Props) {
 
     return (
-        <section className="p-5 grid gap-5 sm:grid-cols-2 grid-cols-1">
+        <section className="p-5 grid gap-5 sm:grid-cols-2 grid-cols-1 bg-DarkMode-Gray-600">
             {results.length === 0 && <div className="w-full md:col-span-2 sm:col-span-1">
                 <NoResults />
             </div>}

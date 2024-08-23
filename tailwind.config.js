@@ -14,6 +14,10 @@ export default {
         'Sakura-400': '#ffc3ce',
         'Sakura-500': '#ffb9c4',
         'Mint': '#b8f2e6',
+        'DarkMode-Gray-300': '#6c757d',
+        'DarkMode-Gray-400': '#495057',
+        'DarkMode-Gray-500': '#343a40',
+        'DarkMode-Gray-600': '#212529'
       }
     },
     fontFamily: {
