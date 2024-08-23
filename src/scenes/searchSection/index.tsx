@@ -51,10 +51,10 @@ function searchSection({ }: Props) {
 
     return (
         <>
-            <section className="text-black flex flex-col justify-center items-center w-full">
+            <section className="text-black flex flex-col justify-center items-center w-full pt-36">
                 <h3 className="text-2xl mb-5 font-medium">For Japanese learners using James Heisig's "Remembering the Kanji"</h3>
                 <div className="p-2">Look up kanji by entering kun'yomi or on'yomi reading </div>
-                <form className=" text-black flex mb-5" onSubmit={(e) => handleSubmit(e)}>
+                <form className=" text-black flex mb-10" onSubmit={(e) => handleSubmit(e)}>
                     <div className={searchBarStyle}>
                         <MagnifyingGlassIcon className="h-6 text-gray-400 mr-2" />
                         <input type="text" className='w-full h-full px-1 bg-transparent outline-none' placeholder='Seach all kanji...' onChange={(e) => setSearchString(e.target.value)} />

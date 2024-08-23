@@ -7,7 +7,7 @@ type Props = {
 const KanjiBlock = ({ entry }: Props) => {
 
     return (
-        <div className="m-2 p-2 relative max-w-[1000px] flex md:flex-row flex-col justify-start items-center text-white bg-gradient-to-br from-[#627fcc] to-[#3c3c77] border-white border-2 rounded-2xl shadow-md shadow-[#ffffff2f]">
+        <div className="m-2 p-2 relative max-w-[1000px] flex md:flex-row flex-col justify-start items-center text-white bg-gradient-to-br from-[#627fcc] to-[#3c3c77] border-white border-2 rounded-2xl shadow-xl">
             <div className="h-8 w-8 flex justify-center items-center absolute top-0 right-0 m-2 p-2 bg-slate-400 rounded-full">
                 {entry.h_index}
             </div>
