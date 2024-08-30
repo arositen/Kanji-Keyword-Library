@@ -1,70 +1,53 @@
 import { useEffect } from "react"
-import { motion, stagger, useAnimate, useInView } from "framer-motion"
-import path from "path"
+import { motion, useAnimate, useInView } from "framer-motion"
 
 const KKDLoadingScreen = () => {
 
-    // const [scope, animate] = useAnimate();
-    // const isInView = useInView(scope, { once: true })
+    const [scope, animate] = useAnimate();
+    const isInView = useInView(scope, { once: true })
 
-    // const handleAnimate = async () => {
-    //     console.log("in the animate function")
-    //     // loading cross and frame expansion and title fade in,
-    //     await animate("#test", { pathLength: 1, opacity: 1 }, { duration: 2, ease: "easeOut" })
-    //     await animate("#test-2", { pathLength: 1, opacity: 1 }, { duration: 2, ease: "easeOut" })
-    //     // await animate("#Path-K1-S1", { pathLength: 1, opacity: 1 }, { duration: 2, ease: "easeOut" })
-    // }
+    const handleAnimate = async () => {
 
-    const svgVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                duration: .01,
-                staggerChildren: 0.2,
-            }
-        }
+        console.log("in the animate function")
+
+        animate("#k1s0-line", { pathLength: 1 }, { duration: 0.4, ease: "circOut" })
+        await animate("#k1s1-line", { pathLength: 1 }, { duration: 0.5, ease: "circIn" })
+        animate("#k1s3-line", { pathLength: 1 }, { duration: .5, ease: "circIn" })
+        animate("#k1s2-line", { pathLength: 1 }, { duration: 1.3, ease: "circOut" })
+
+        animate("#k2s0-line", { pathLength: 1 }, { duration: 0.4, ease: "circOut" })
+        await animate("#k2s1-line", { pathLength: 1 }, { duration: 0.5, ease: "circIn" })
+        animate("#k2s3-line", { pathLength: 1 }, { duration: .5, ease: "circIn" })
+        animate("#k2s2-line", { pathLength: 1 }, { duration: 0.6, ease: "circIn" })
+        animate("#Splatter-1-0", { opacity: 1 }, { duration: 0.01, delay: 0.45 })
+        animate("#Splatter-1-3", { opacity: 1 }, { duration: 0.01, delay: 0.45 })
+        animate("#Splatter-1-2", { opacity: 1 }, { duration: 0.01, delay: 0.55 })
+        animate("#Splatter-1-1", { opacity: 1 }, { duration: 0.01, delay: 0.60 })
+        animate("#Splatter-1-4", { opacity: 1 }, { duration: 0.01, delay: 1 })
+
+        animate("#d1s0-line", { pathLength: 1 }, { duration: 0.4, ease: "circOut" })
+        animate("#d1s1-line", { pathLength: 1 }, { duration: 0.5, ease: "circIn" })
+        animate("#Splatter-3", { opacity: 1 }, { delay: 0.25, duration: 0.01 })
+
+        animate("#Splatter-2", { opacity: 1 }, { duration: 0.01, delay: 0.5 })
+        animate("#Splatter-4", { opacity: 1 }, { duration: 0.01 })
+
     }
 
-    const splatterVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                delay: 1,
-                duration: .01,
-            }
+    useEffect(() => {
+        if (isInView) {
+            handleAnimate();
         }
-    }
 
-
-    const pathVariants = {
-        hidden: { pathLength: 0 },
-        visible: {
-            pathLength: 1,
-            transition: {
-                pathLength: { type: "spring", duration: 2, bounce: 0, stagger: 1 }
-            },
-
-
-        }
-    }
-
-    // useEffect(() => {
-    //     if (isInView) {
-    //         handleAnimate();
-    //     }
-
-    // }, [isInView])
+    }, [isInView])
 
     return (
 
-        <div className='w-full h-[700px] flex justify-center items-center bg-blue-500'
+        <motion.div ref={scope} className='w-full h-screen flex justify-center items-center bg-blue-500 pt-32'
         >
             <motion.svg
                 initial="hidden"
                 animate="visible"
-                variants={svgVariants}
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 486.79 507.29"
@@ -141,25 +124,35 @@ const KKDLoadingScreen = () => {
                 <g id="K1-S0">
                     <g className="cls-2">
                         <motion.line
-                            variants={pathVariants}
+                            id="k1s0-line"
+                            initial={{ pathLength: 0 }}
                             className="cls-3"
                             x1={153.79} y1={25} x2={242.79} y2={25} />
                     </g>
                 </g>
                 <g id="K1-S1">
                     <g className="cls-4">
-                        <motion.line variants={pathVariants} className="cls-5" x1={194.79} y1={20} x2={194.79} y2={391} />
+                        <motion.line
+                            id="k1s1-line"
+                            initial={{ pathLength: 0 }}
+                            className="cls-5"
+                            x1={194.79} y1={20} x2={194.79} y2={391} />
                     </g>
                 </g>
                 <g id="K1-S2">
                     <g className="cls-6">
-                        <motion.line variants={pathVariants} className="cls-7" x1={199.09} y1={242.44} x2={363.29} y2={69.5} />
+                        <motion.line
+                            id="k1s2-line"
+                            initial={{ pathLength: 0 }}
+                            className="cls-7"
+                            x2={199.09} y2={242.44} x1={363.29} y1={69.5} />
                     </g>
                 </g>
                 <g id="K1-S3">
                     <g className="cls-8">
                         <motion.polyline
-                            variants={pathVariants}
+                            id="k1s3-line"
+                            initial={{ pathLength: 0 }}
                             className="cls-9"
                             points="160.79 176 329.94 381.6 329.79 239"
                         />
@@ -167,28 +160,45 @@ const KKDLoadingScreen = () => {
                 </g>
                 <g id="K2-S0">
                     <g className="cls-10">
-                        <motion.line variants={pathVariants} className="cls-3" x1={41.79} y1={36} x2={103.79} y2={36} />
+                        <motion.line
+                            id="k2s0-line"
+                            initial={{ pathLength: 0 }}
+                            className="cls-3"
+                            x1={41.79} y1={36} x2={103.79} y2={36} />
                     </g>
                 </g>
                 <g id="K2-S1">
                     <g className="cls-11">
-                        <motion.line variants={pathVariants} className="cls-5" x1={58.29} y1={36} x2={58.29} y2={374} />
+                        <motion.line
+                            id="k2s1-line"
+                            initial={{ pathLength: 0 }}
+                            className="cls-5"
+                            x1={58.29} y1={36} x2={58.29} y2={374} />
                     </g>
                 </g>
                 <g id="K2-S2">
                     <g className="cls-12">
-                        <motion.line variants={pathVariants} className="cls-13" x1={59.02} y1={260.8} x2={223.22} y2={87.86} />
+                        <motion.line
+                            id="k2s2-line"
+                            initial={{ pathLength: 0 }}
+                            className="cls-13"
+                            x2={59.02} y2={260.8} x1={223.22} y1={87.86} />
                     </g>
                 </g>
                 <g id="K2-S3">
                     <g className="cls-14">
-                        <motion.polyline variants={pathVariants} className="cls-9" points="34.79 172 194.79 367 194.79 239" />
+                        <motion.polyline
+                            id="k2s3-line"
+                            initial={{ pathLength: 0 }}
+                            className="cls-9"
+                            points="34.79 172 194.79 367 194.79 239" />
                     </g>
                 </g>
                 <g id="D1-S0">
                     <g className="cls-15">
                         <motion.polyline
-                            variants={pathVariants}
+                            id="d1s0-line"
+                            initial={{ pathLength: 0 }}
                             className="cls-13"
                             points="307.79 345 416.79 184 416.79 147 305.79 63"
                         />
@@ -196,36 +206,51 @@ const KKDLoadingScreen = () => {
                 </g>
                 <g id="D1-S1">
                     <g className="cls-16">
-                        <motion.line variants={pathVariants} className="cls-17" x1={327.29} y1={101} x2={327.29} y2={360.5} />
+                        <motion.line
+                            id="d1s1-line"
+                            initial={{ pathLength: 0 }}
+                            className="cls-17"
+                            x1={327.29} y1={101} x2={327.29} y2={360.5} />
                     </g>
                 </g>
-                <motion.g id="Splatter-1" variants={splatterVariants}>
-                    <path
+                <motion.g
+                    id="Splatter-1">
+                    {/* <path
                         d="M150,145.46a6.65,6.65,0,0,0,5.17-.81,40.9,40.9,0,0,1,4.84-3,14.52,14.52,0,0,1,7.43-1.18,14,14,0,0,1,8.44,3.89c5,4.52,5.6,16.77-2.28,21.73-7.21,4.54-18.07,1.05-20.47-6.87a31.85,31.85,0,0,1-1.1-5.58c-.33-2.8-1.59-4.61-4.46-5.28a2.27,2.27,0,0,1-1.45-2.82c0-.27,1.13-.46,1.75-.49A10.35,10.35,0,0,1,150,145.46Z"
                         transform="translate(0.79 -49)"
-                    />
-                    <path
+                    /> */}
+                    <motion.path
+                        id="Splatter-1-0"
+                        initial={{ opacity: 0 }}
                         d="M194,105.14c0,4.12-2.68,5.78-5.6,7.16a3.25,3.25,0,0,1-1.88,0c-4.36-.91-6.89-3.89-6.66-7.76A7.13,7.13,0,0,1,185.57,98a7.22,7.22,0,0,1,6.85,2.32C193.67,101.74,194.48,103.44,194,105.14Z"
                         transform="translate(0.79 -49)"
                     />
-                    <path
+                    <motion.path
+                        id="Splatter-1-1"
+                        initial={{ opacity: 0 }}
                         d="M129.33,238.93c-.62,0-1.42.36-1.81.09a2.85,2.85,0,0,1-1.06-3.33,2.27,2.27,0,0,1,1.17-1.37,2.37,2.37,0,0,1,3.08,1.45A2.51,2.51,0,0,1,129.33,238.93Z"
                         transform="translate(0.79 -49)"
                     />
-                    <path
+                    <motion.path
+                        id="Splatter-1-2"
+                        initial={{ opacity: 0 }}
                         d="M148.37,221.79c-.2,1.28-.91,2.06-1.91,1.71a2,2,0,0,1-1-2.82c.18-.47.82-1.11,1.22-1.09C147.78,219.66,148.35,220.53,148.37,221.79Z"
                         transform="translate(0.79 -49)"
                     />
-                    <path
+                    <motion.path
+                        id="Splatter-1-3"
+                        initial={{ opacity: 0 }}
                         d="M163.25,120.45a1.76,1.76,0,0,1,1.7-2.06,1.62,1.62,0,0,1,2,1.78,1.79,1.79,0,0,1-.84,1.41A2.25,2.25,0,0,1,163.25,120.45Z"
                         transform="translate(0.79 -49)"
                     />
-                    <path
+                    <motion.path
+                        id="Splatter-1-4"
+                        initial={{ opacity: 0 }}
                         d="M202.78,237.75c-.71,1.41-1.58,1.73-2.44.8a2.21,2.21,0,0,1-.17-3c.28-.37,1-.8,1.33-.69A2,2,0,0,1,202.78,237.75Z"
                         transform="translate(0.79 -49)"
                     />
                 </motion.g>
-                <motion.g id="Splatter-2" variants={splatterVariants}>
+                <motion.g id="Splatter-2" initial={{ opacity: 0 }}>
                     <path
                         d="M225.76,350.64a7.75,7.75,0,0,0,.83,5.15,40.67,40.67,0,0,1,2.61,4.76,17.24,17.24,0,0,1,1.23,7.4,15.5,15.5,0,0,1-3,8.54c-3.62,5.11-13.83,6-18.21-1.72-4-7.1-1.44-18,5.1-20.65a23.37,23.37,0,0,1,4.62-1.24c2.33-.4,3.8-1.7,4.27-4.59a1.87,1.87,0,0,1,2.31-1.53c.22,0,.42,1.13.46,1.75A12,12,0,0,1,225.76,350.64Z"
                         transform="translate(0.79 -49)"
@@ -251,7 +276,7 @@ const KKDLoadingScreen = () => {
                         transform="translate(0.79 -49)"
                     />
                 </motion.g>
-                <motion.g id="Splatter-3" variants={splatterVariants}>
+                <motion.g id="Splatter-3" initial={{ opacity: 0 }}>
                     <path
                         d="M319.33,181a4.38,4.38,0,0,0,2.15-3.33c.07-.8.75-1.08,1.43-.63a6.25,6.25,0,0,0,3.17,1.12c1.55.11,2.32,1,2.66,2.7a4.7,4.7,0,0,1-2.16,5.33,2.68,2.68,0,0,1-1.3.34,5.84,5.84,0,0,1-2.64-.7,3.27,3.27,0,0,1-1.47-1.38,8.57,8.57,0,0,1-.95-2.57,1.51,1.51,0,0,0-.79-1.06A1.8,1.8,0,0,0,319.33,181Z"
                         transform="translate(0.79 -49)"
@@ -281,7 +306,7 @@ const KKDLoadingScreen = () => {
                         transform="translate(0.79 -49)"
                     />
                 </motion.g>
-                <motion.g id="Splatter-4" variants={splatterVariants}>
+                <motion.g id="Splatter-4" initial={{ opacity: 0 }}>
                     <path
                         d="M451.76,235.64a7.75,7.75,0,0,0,.83,5.15,40.67,40.67,0,0,1,2.61,4.76,17.24,17.24,0,0,1,1.23,7.4,15.5,15.5,0,0,1-3,8.54c-3.62,5.11-13.83,6-18.21-1.72-4-7.1-1.44-18,5.1-20.65a23.37,23.37,0,0,1,4.62-1.24c2.33-.4,3.8-1.7,4.27-4.59a1.87,1.87,0,0,1,2.31-1.53c.22,0,.42,1.13.46,1.75A12,12,0,0,1,451.76,235.64Z"
                         transform="translate(0.79 -49)"
@@ -309,7 +334,7 @@ const KKDLoadingScreen = () => {
                 </motion.g>
             </motion.svg>
 
-        </div>
+        </motion.div>
     )
 }
 
