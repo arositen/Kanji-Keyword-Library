@@ -13,15 +13,15 @@ function Navbar() {
     }
 
     return (
-        <motion.nav className={`${navBackground} flex fixed top-0 left-0 z-20 justify-between w-full mx-auto`}
+        <motion.nav className={`${navBackground} flex jusify-center fixed top-0 left-0 z-20 w-full mx-auto`}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 80 }}
             transition={{ delay: 3, duration: .68 }}>
-            <button className={navStyles} onClick={() => handleHome()}>
+            <button className={`${navStyles} basis-1/3 justify-center`} onClick={() => handleHome()}>
                 <KKDLogo color='white' x={60} y={60} />
             </button>
-            <div className={navStyles}>Kanji Keyword Dictionary</div>
-            <div className={navStyles}>
+            <div className={`${navStyles} basis-1/3 justify-center`}>Kanji Keyword Dictionary</div>
+            <div className={`${navStyles} basis-1/3 justify-center`}>
                 <div className={navStyles}>Kanji of the Day</div>
                 <button className={navStyles}>
                     <MoonIcon className="h-6 w-6 mx-4 text-white" />
