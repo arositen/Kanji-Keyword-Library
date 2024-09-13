@@ -46,7 +46,6 @@ function searchSection({ }: Props) {
         getResults(searchString);
     }
 
-    const buttonStyles = ' py-2 px-5 mx-3 text-sm text-gray-100 flex justify-center items-center rounded-full bg-DarkMode-Gray-400';
     const searchBarStyle = 'flex items-center w-[600px] h-10 text-sm rounded-full px-2 shadow-[-10px_3px_20px_-10px] shadow-[#6c757d]'
 
     return (
@@ -62,11 +61,6 @@ function searchSection({ }: Props) {
                     {/* <button type="submit" className="bg-white mx-2 p-2">Search</button> */}
                 </form>
 
-                <div className="ml-10 flex justify-start w-full">
-                    <button className={buttonStyles}>Home</button>
-                    <button className={buttonStyles}>Kanji of the day</button>
-                    <button className={buttonStyles}>I'm feeling lucky</button>
-                </div>
             </section>
 
             <ResultSection results={searchResults} />

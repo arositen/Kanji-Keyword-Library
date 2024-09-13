@@ -48,7 +48,7 @@ const KKDLoadingScreen = () => {
         <div ref={scope}>
             <motion.div id="container"
                 initial={{ opacity: 1 }}
-                className='w-full h-screen flex justify-center items-center'
+                className='w-full h-screen flex justify-center items-center pointer-events-none'
             >
                 <motion.svg
                     initial="hidden"
