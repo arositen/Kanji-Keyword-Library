@@ -1,5 +1,6 @@
 import KKDLogo from "../shared/kkdLogo";
 import { MoonIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
 function Navbar() {
 
@@ -12,7 +13,10 @@ function Navbar() {
     }
 
     return (
-        <nav className={`${navBackground} flex fixed z-20 justify-between w-full`}>
+        <motion.nav className={`${navBackground} flex fixed top-0 left-0 z-20 justify-between w-full mx-auto`}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 80 }}
+            transition={{ delay: 3, duration: .68 }}>
             <button className={navStyles} onClick={() => handleHome()}>
                 <KKDLogo color='white' x={60} y={60} />
             </button>
@@ -23,7 +27,7 @@ function Navbar() {
                     <MoonIcon className="h-6 w-6 mx-4 text-white" />
                 </button>
             </div>
-        </nav >
+        </motion.nav >
     )
 }
 

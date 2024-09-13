@@ -33,7 +33,7 @@ const KKDLoadingScreen = () => {
         animate("#Splatter-2", { opacity: 1 }, { duration: 0.01, delay: 0.5 })
         animate("#Splatter-4", { opacity: 1 }, { duration: 0.01 })
 
-        animate("#container", { height: 0, opacity: 0 }, { duration: 0.5, ease: "easeInOut", delay: 1.2 })
+        animate("#container", { height: 0, opacity: 0 }, { duration: 0.80, ease: "easeInOut", delay: 1.2 })
 
     }
 
@@ -48,7 +48,7 @@ const KKDLoadingScreen = () => {
         <div ref={scope}>
             <motion.div id="container"
                 initial={{ opacity: 1 }}
-                className='w-full h-screen flex justify-center items-center pointer-events-none'
+                className='w-full h-screen flex justify-center mx-auto items-center pointer-events-none'
             >
                 <motion.svg
                     initial="hidden"
