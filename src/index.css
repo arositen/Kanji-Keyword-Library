@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-    background-color: #212529;
-}
-
 #search-bar {
     box-shadow: 0px 0px 20px 5px #6c757d;
 
