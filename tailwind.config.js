@@ -17,7 +17,8 @@ export default {
         'DarkMode-Gray-300': '#6c757d',
         'DarkMode-Gray-400': '#495057',
         'DarkMode-Gray-500': '#343a40',
-        'DarkMode-Gray-600': '#212529'
+        'DarkMode-Gray-600': '#212529',
+        'Theme-bg': 'rgba(var(--DrilledBackground))',
       }
     },
     fontFamily: {
