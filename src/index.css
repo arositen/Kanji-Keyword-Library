@@ -10,9 +10,15 @@
 }
 
 .light {
-    --DrilledBackground: 200, 245, 245;
+    --app-bg: 233, 237, 241;
+    --text-color: 0, 0, 0;
+    --Theme-kanjiCard-bg1: 73, 80, 87;
+    --Theme-kanjiCard-bg2: 200, 245, 245;
 }
 
 .dark {
-    --DrilledBackground: 245, 100, 245;
+    --app-bg: 33, 37, 41;
+    --text-color: 255, 255, 255;
+    --Theme-kanjiCard-bg1: 73, 80, 87;
+    --Theme-kanjiCard-bg2: 245, 100, 245;
 }

@@ -31,7 +31,7 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
         <ThemeContext.Provider
             value={{
                 themeMode,
-                changeTheme,
+                changeTheme
             }}>
             {children}
         </ThemeContext.Provider>

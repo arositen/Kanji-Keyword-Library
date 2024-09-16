@@ -1,9 +1,12 @@
 import { useEffect } from "react"
 import { motion, useAnimate, useInView } from "framer-motion"
+import { useTheme } from "@/context/ThemeContext"
 
 const KKDLoadingScreen = () => {
 
-    const fillColor = "#ffff"
+    const { themeMode } = useTheme();
+
+    const fillColor = (themeMode === 'light' ? "#000000" : "#ffffff");
 
     const [scope, animate] = useAnimate();
     const isInView = useInView(scope, { once: true })
