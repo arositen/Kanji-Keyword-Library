@@ -3,6 +3,8 @@ import { motion, useAnimate, useInView } from "framer-motion"
 
 const KKDLoadingScreen = () => {
 
+    const fillColor = "#ffff"
+
     const [scope, animate] = useAnimate();
     const isInView = useInView(scope, { once: true })
 
@@ -58,11 +60,12 @@ const KKDLoadingScreen = () => {
                     viewBox="0 0 486.79 507.29"
                     width={700}
                     height={700}
+                    fill={fillColor}
                 >
                     <defs>
                         <style>
                             {
-                                ".cls-1,.cls-13,.cls-17,.cls-3,.cls-5,.cls-7,.cls-9{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-13,.cls-17,.cls-3,.cls-5,.cls-7,.cls-9{stroke:#000;stroke-miterlimit:10;}.cls-3{stroke-width:50px;}.cls-4{clip-path:url(#clip-path-2);}.cls-5{stroke-width:80px;}.cls-6{clip-path:url(#clip-path-3);}.cls-7{stroke-width:133px;}.cls-8{clip-path:url(#clip-path-4);}.cls-9{stroke-width:90px;}.cls-10{clip-path:url(#clip-path-5);}.cls-11{clip-path:url(#clip-path-6);}.cls-12{clip-path:url(#clip-path-7);}.cls-13{stroke-width:140px;}.cls-14{clip-path:url(#clip-path-8);}.cls-15{clip-path:url(#clip-path-9);}.cls-16{clip-path:url(#clip-path-10);}.cls-17{stroke-width:70px;}"
+                                `.cls-1,.cls-13,.cls-17,.cls-3,.cls-5,.cls-7,.cls-9{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-13,.cls-17,.cls-3,.cls-5,.cls-7,.cls-9{stroke:${fillColor};stroke-miterlimit:10;}.cls-3{stroke-width:50px;}.cls-4{clip-path:url(#clip-path-2);}.cls-5{stroke-width:80px;}.cls-6{clip-path:url(#clip-path-3);}.cls-7{stroke-width:133px;}.cls-8{clip-path:url(#clip-path-4);}.cls-9{stroke-width:90px;}.cls-10{clip-path:url(#clip-path-5);}.cls-11{clip-path:url(#clip-path-6);}.cls-12{clip-path:url(#clip-path-7);}.cls-13{stroke-width:140px;}.cls-14{clip-path:url(#clip-path-8);}.cls-15{clip-path:url(#clip-path-9);}.cls-16{clip-path:url(#clip-path-10);}.cls-17{stroke-width:70px;}`
                             }
                         </style>
                         <clipPath id="clip-path" transform="translate(0.79 -49)">
