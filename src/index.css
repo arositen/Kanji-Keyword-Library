@@ -1,24 +1,27 @@
 @import url("https://rsms.me/inter/inter.css");
 @import url('https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slackside+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 #search-bar {
-    box-shadow: 0px 0px 20px 5px #6c757d;
+    box-shadow: 0px 0px 15px 1px #6c757d;
 
 }
 
 .light {
     --app-bg: 233, 237, 241;
     --text-color: 0, 0, 0;
-    --Theme-kanjiCard-bg1: 73, 80, 87;
+    --Theme-kanjiCard-bg1: 150, 185, 225;
     --Theme-kanjiCard-bg2: 200, 245, 245;
 }
 
 .dark {
     --app-bg: 33, 37, 41;
     --text-color: 255, 255, 255;
-    --Theme-kanjiCard-bg1: 73, 80, 87;
-    --Theme-kanjiCard-bg2: 245, 100, 245;
+    --Theme-kanjiCard-bg1: 85, 40, 220;
+    --Theme-kanjiCard-bg2: 150, 80, 245;
+
 }

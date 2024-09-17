@@ -21,6 +21,7 @@ export default {
     fontFamily: {
       sans: ["Inter", "sans-serif"],
       sans2: ["Yuji Mai", "sans-serif"],
+      slack: ["Slackside One", "cursive"]
     },
     screens: {
       xs: "480px",

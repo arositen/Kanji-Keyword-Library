@@ -6,7 +6,7 @@ const KKDLoadingScreen = () => {
 
     const { themeMode } = useTheme();
 
-    const fillColor = (themeMode === 'light' ? "#000000" : "#ffffff");
+    const fillColor = (themeMode === 'light') ? "#000000" : 'white';
 
     const [scope, animate] = useAnimate();
     const isInView = useInView(scope, { once: true })
@@ -53,7 +53,7 @@ const KKDLoadingScreen = () => {
         <div ref={scope}>
             <motion.div id="container"
                 initial={{ opacity: 1 }}
-                className='w-full h-screen flex justify-center mx-auto items-center pointer-events-none'
+                className={`${themeMode} bg-App-bg w-full h-screen flex justify-center mx-auto items-center pointer-events-none`}
             >
                 <motion.svg
                     initial="hidden"

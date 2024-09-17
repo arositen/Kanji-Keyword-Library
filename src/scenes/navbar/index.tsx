@@ -6,7 +6,7 @@ import { useTheme } from "@/context/ThemeContext";
 function Navbar() {
 
     const { themeMode, changeTheme } = useTheme();
-    const navStyles = `flex items-center mx-4 my-3 font-bold text-Theme-text-color text-md`;
+    const navStyles = `flex items-center mx-4 my-3 text-Theme-text-color`;
 
     const handleHome = () => {
         console.log("hello world");
@@ -21,19 +21,25 @@ function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 80 }}
             transition={{ delay: 3, duration: .68 }}>
-            <div className="flex justify-between w-full max-w-[1200px]">
-                <button className={`${navStyles} basis-1/3 justify-start`} onClick={() => handleHome()}>
+            <motion.div className="flex justify-between w-full max-w-[1400px] px-5 "
+                initial={{ y: -300 }}
+                animate={{ y: 0 }}
+                transition={{ delay: 3, duration: .68 }}>
+                <button className={`${navStyles} font-sans basis-1/5 justify-start`} onClick={() => handleHome()}>
                     <KKDLogo x={60} y={60} />
                 </button>
-                <div className={`${navStyles} basis-1/3 justify-center`}>Kanji Keyword Dictionary</div>
-                <div className={`${navStyles} basis-1/3 justify-end`}>
+                <div
+                    className={`${navStyles} basis-3/5 justify-center text-5xl font-slack`}>
+                    Kanji Keyword Dictionary
+                </div>
+                <div className={`${navStyles} basis-1/5 justify-end`}>
                     <button className={navStyles} onClick={() => toggleTheme()}>
 
                         {themeMode === "light" && <MoonIcon className="h-6 w-6 mx-4 text-black" />}
                         {themeMode === "dark" && <SunIcon className="h-6 w-6 mx-4 text-white" />}
                     </button>
                 </div>
-            </div>
+            </motion.div>
         </motion.nav >
     )
 }
