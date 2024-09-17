@@ -12,7 +12,7 @@ function resultSection({ results }: Props) {
     const { themeMode } = useTheme();
 
     return (
-        <section className={`${themeMode} bg-App-bg w-full flex justify-center`}>
+        <section className={`${themeMode} bg-App-bg w-full flex justify-center pb-10`}>
             <div className="p-5 max-w-[1200px] grid gap-5 sm:grid-cols-2 grid-cols-1">
                 {results.length === 0 && <div className="w-full md:col-span-2 sm:col-span-1">
                     <NoResults />
