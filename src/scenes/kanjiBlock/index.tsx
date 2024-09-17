@@ -43,23 +43,25 @@ const KanjiBlock = ({ entry }: Props) => {
                 </div>
             </div>
 
-            <div className={`${toggleCard ? 'opacity-100' : 'opacity-0'} duration-150 h-full flex flex-col justify-center items-start pl-32 pr-5 opacity-0 pointer-events-none`}>
-                <div className="flex justify-end p-2">
-                    {entry.story}
-                </div>
-                <div className="flex flex-col p-2 text-md">
-                    <div className="my-1">
-                        <span className="font-bold">Kun: </span>{entry.kunreadings.map((r, index) => (
-                            <span key={`kun - ${index} - ${entry.h_index}`} className="underline underline-offset-4 mx-2">{r} ,</span>
-                        ))}
+            <div className={`${toggleCard ? 'opacity-100' : 'opacity-0'} duration-150 h-full flex flex-col justify-center items-start pl-32 pr-5 pointer-events-none`}>
+                <div className="bg-[#ffffff38] round-md">
+                    <div className="flex justify-end p-2">
+                        {entry.story}
+                    </div>
+                    <div className="flex flex-col p-2 text-md">
+                        <div className="my-1">
+                            <span className="font-bold">Kun: </span>{entry.kunreadings.map((r, index) => (
+                                <span key={`kun - ${index} - ${entry.h_index}`} className="underline underline-offset-4 mx-2">{r} ,</span>
+                            ))}
+
+                        </div>
+                        <div className="my-1">
+                            <span className="font-bold">On: </span>{entry.onreadings.map((r, index) => (
+                                <span key={`on - ${index} - ${entry.h_index}`} className="underline underline-offset-4 mx-2">{r} ,</span>
+                            ))}
+                        </div>
 
                     </div>
-                    <div className="my-1">
-                        <span className="font-bold">On: </span>{entry.onreadings.map((r, index) => (
-                            <span key={`on - ${index} - ${entry.h_index}`} className="underline underline-offset-4 mx-2">{r} ,</span>
-                        ))}
-                    </div>
-
                 </div>
             </div>
 
