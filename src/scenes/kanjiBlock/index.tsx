@@ -14,7 +14,6 @@ const KanjiBlock = ({ entry }: Props) => {
 
     const handleClick = () => {
         setToggleCard(!toggleCard);
-        console.log("goggled")
     }
 
     return (

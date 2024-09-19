@@ -36,7 +36,7 @@ function searchSection({ }: Props) {
         try {
             const response = await fetch(`http://localhost:5173/api/search/${searchString}`);
             const jsonResponse = await response.json();
-            console.log(jsonResponse);
+
             setSearchResults(jsonResponse);
 
         } catch (error) {

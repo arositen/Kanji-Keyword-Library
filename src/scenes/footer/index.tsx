@@ -6,15 +6,16 @@ const Footer = () => {
 
     return (
 
-        <div className={`${themeMode} flex justify-between bg-blue-500 w-full h-24 p-10`}>
-            <div className="flex flex-col">
-                <div>Footer Link</div>
-            </div>
-            <div className="flex flex-col">
-                Footer Link
-            </div>
-            <div className="flex flex-col">
-                Footer Link
+        <div className={`${themeMode} w-full flex justify-center items-center bg-App-bg`}>
+            <div className={`${themeMode} font-slack text-3xl flex justify-around text-Theme-text-color w-full max-w-[1200px] p-10 border-solid border-t-2 border-[#0000002c]`}>
+                <div className="flex flex-col">
+                    <div>FAQ</div>
+                    <div>Buy me a coffee!</div>
+                </div>
+                <div className="flex flex-col">
+                    socials
+                </div>
+
             </div>
         </div>
     )
