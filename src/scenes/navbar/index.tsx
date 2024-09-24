@@ -2,14 +2,16 @@ import KKDLogo from "../shared/kkdLogo";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
+import { useResultsContext } from "@/context/ResultsContext";
 
 function Navbar() {
 
     const { themeMode, changeTheme } = useTheme();
+    const { setHomeData } = useResultsContext();
     const navStyles = `flex items-center mx-4 my-3 text-Theme-text-color`;
 
     const handleHome = () => {
-        console.log("hello world");
+        setHomeData();
     }
 
     const toggleTheme = () => {

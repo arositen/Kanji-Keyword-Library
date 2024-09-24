@@ -1,43 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import ResultSection from '../resultSection';
 import { useTheme } from "@/context/ThemeContext";
+import { BASE_URL } from "@/constants";
+import { useResultsContext } from "@/context/ResultsContext";
+
 
 type Props = {}
 
 function searchSection({ }: Props) {
 
     const { themeMode } = useTheme();
+    const { results, setResults, setHomeData } = useResultsContext();
 
     const [searchString, setSearchString] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
 
-    useEffect(() => {
-
-        const getInitialData = async (): Promise<void> => {
-
-            try {
-                const response = await fetch('http://localhost:5173/api/firstTenKanji');
-                const jsonResponse = await response.json();
-
-                setSearchResults(jsonResponse);
-
-            } catch (error) {
-                console.error(error)
-            }
-        }
-
-        getInitialData();
-
-    }, [])
+    if (results.length === 0 && searchString.length === 0) {
+        setHomeData();
+    }
 
     const getResults = async (submittedInput: string): Promise<void> => {
         console.log("searching for: ", submittedInput);
         try {
-            const response = await fetch(`http://localhost:5173/api/search/${searchString}`);
+            const response = await fetch(`${BASE_URL}/api/search/${searchString}`);
             const jsonResponse = await response.json();
 
-            setSearchResults(jsonResponse);
+            setResults(jsonResponse);
 
         } catch (error) {
             console.error(error)
@@ -65,7 +53,7 @@ function searchSection({ }: Props) {
                 </div>
             </section>
 
-            <ResultSection results={searchResults} />
+            <ResultSection results={results} />
         </>
     )
 }
