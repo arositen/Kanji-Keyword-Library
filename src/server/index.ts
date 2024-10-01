@@ -43,7 +43,14 @@ app.get('/api/search/:searchString', async (req, res) => {
 
         const stringToSearch = req.params.searchString;
         const kanaSearchTerms = convertToKana(stringToSearch);
-        const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}' OR ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}.%' OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}' OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}.%';`);
+
+        const allkanji = await pool.query(
+            `SELECT * FROM kanjitest WHERE ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}' 
+            OR ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}.%' 
+            OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}' 
+            OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}.%';`
+        );
+
         res.json(allkanji.rows);
 
     } catch (error) {
