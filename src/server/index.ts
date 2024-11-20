@@ -18,7 +18,7 @@ app.get('/api/firstKanji', async (req, res) => {
 app.get('/api/firstTenKanji', async (req, res) => {
 
     try {
-        const allkanji = await pool.query('SELECT * FROM kanjitest WHERE h_index <= 10;');
+        const allkanji = await pool.query('SELECT * FROM kanjitest WHERE h_index <= 120;');
         res.json(allkanji.rows)
 
     } catch (error) {
@@ -47,7 +47,9 @@ app.get('/api/search/:searchString', async (req, res) => {
         const allkanji = await pool.query(
             `SELECT * FROM kanjitest WHERE ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}' 
             OR ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}.%' 
+            OR ARRAY_TO_STRING(kunreadings, ',') LIKE '%${kanaSearchTerms.hiragana}-%' 
             OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}' 
+            OR ARRAY_TO_STRING(onreadings, ',') LIKE '%${kanaSearchTerms.katakana}-%' 
             OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}.%';`
         );
 
