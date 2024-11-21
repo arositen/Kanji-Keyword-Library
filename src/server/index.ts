@@ -43,13 +43,16 @@ app.get('/api/search/:searchString', async (req, res) => {
 
         const stringToSearch = req.params.searchString;
         const kanaSearchTerms = convertToKana(stringToSearch);
+        const char = 'h';
+        console.log(`hiragana is:${kanaSearchTerms.hiragana}`);
+        console.log('katakana is:', kanaSearchTerms.katakana);
 
         const allkanji = await pool.query(
-            `SELECT * FROM kanjitest WHERE ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}' 
-            OR ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}.%' 
-            OR ARRAY_TO_STRING(kunreadings, ',') LIKE '%${kanaSearchTerms.hiragana}-%' 
-            OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}' 
-            OR ARRAY_TO_STRING(onreadings, ',') LIKE '%${kanaSearchTerms.katakana}-%' 
+            `SELECT * FROM kanjitest WHERE '${kanaSearchTerms.hiragana}' = ANY(kunreadings) 
+            OR '${kanaSearchTerms.hiragana}-' = ANY(kunreadings)
+            OR '${kanaSearchTerms.katakana}' = ANY(onreadings)
+            OR '${kanaSearchTerms.katakana}-' = ANY(onreadings)
+            OR ARRAY_TO_STRING(kunreadings, ',') LIKE '${kanaSearchTerms.hiragana}.%'
             OR ARRAY_TO_STRING(onreadings, ',') LIKE '${kanaSearchTerms.katakana}.%';`
         );
 
