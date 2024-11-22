@@ -7,6 +7,7 @@ const app = express();
 
 app.get('/api/firstKanji', async (req, res) => {
     try {
+        console.log("req is :", req);
         const allkanji = await pool.query('SELECT * FROM kanjitest WHERE h_index = 1;');
         res.json(allkanji.rows)
 
@@ -18,6 +19,7 @@ app.get('/api/firstKanji', async (req, res) => {
 app.get('/api/firstTenKanji', async (req, res) => {
 
     try {
+        console.log("req is :", req);
         const allkanji = await pool.query('SELECT * FROM kanjitest WHERE h_index <= 120;');
         res.json(allkanji.rows)
 
@@ -29,6 +31,7 @@ app.get('/api/firstTenKanji', async (req, res) => {
 app.get('/api/randomKanji', async (req, res) => {
 
     try {
+        console.log("req is :", req);
         const randomNum = Math.floor((Math.random() * 2200) + 1);
         const allkanji = await pool.query(`SELECT * FROM kanjitest WHERE h_index = ${randomNum};`);
         res.send(allkanji.rows[0]);
