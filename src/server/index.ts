@@ -43,7 +43,6 @@ app.get('/api/search/:searchString', async (req, res) => {
 
         const stringToSearch = req.params.searchString;
         const kanaSearchTerms = convertToKana(stringToSearch);
-        const char = 'h';
         console.log(`hiragana is:${kanaSearchTerms.hiragana}`);
         console.log('katakana is:', kanaSearchTerms.katakana);
 

@@ -47,7 +47,7 @@ function searchSection({ }: Props) {
                         <form className=" text-Theme-text-color flex mb-10" onSubmit={(e) => handleSubmit(e)}>
                             <div id='search-bar' className={searchBarStyle}>
                                 <MagnifyingGlassIcon className="h-6 text-gray-400 mr-2" />
-                                <input type="text" className='w-full h-full px-1 bg-transparent outline-none' placeholder='Search all kanji...' onChange={(e) => setSearchString(e.target.value)} />
+                                <input type="text" className='w-full h-full px-1 bg-transparent outline-none' placeholder='Search all kanji pronunciation... (E.g. "ko", "matsu", "hashi", etc.)' onChange={(e) => setSearchString(e.target.value)} />
                             </div>
                             {/* <button type="submit" className="bg-white mx-2 p-2">Search</button> */}
                         </form>
